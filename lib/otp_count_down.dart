@@ -4,13 +4,13 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 
 class OTPCountDown {
-  String _countDown;
-  Timer _timer;
+  String? _countDown;
+  late Timer _timer;
 
   OTPCountDown.startOTPTimer({
-    @required int timeInMS,
-    @required void currentCountDown(String countDown),
-    @required void onFinish(),
+    required int timeInMS,
+    required void currentCountDown(String? countDown),
+    required void onFinish(),
   }) {
     _timer = Timer.periodic(Duration(milliseconds: 1000), (Timer timer) {
       timeInMS -= 1000;
@@ -36,7 +36,7 @@ class OTPCountDown {
     });
   }
 
-  String get _getCountDown => _countDown;
+  String? get _getCountDown => _countDown;
 
   void cancelTimer() {
     if (_timer.isActive) {
